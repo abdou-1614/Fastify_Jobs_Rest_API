@@ -1,6 +1,6 @@
 import {FastifyReply, FastifyRequest } from "fastify";
 import { CreateUserInput, LoginInput } from "./user.schema";
-import { createUser, findUserByEmail } from "./user.services";
+import { createUser, findUserByEmail, findUsers } from "./user.services";
 import bcrypt from "bcrypt"
 import { omit } from "lodash";
 
@@ -36,4 +36,9 @@ export async function loginUserHandler(request: FastifyRequest<{Body: LoginInput
     return {
         accessToken: request.jwt.sign(payload)
     }
+}
+
+export async function findUsersHandler(){
+    const users = await findUsers()
+    return users
 }
