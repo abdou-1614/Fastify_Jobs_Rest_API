@@ -1,7 +1,6 @@
 import { CreateUserInput } from "./user.schema";
 import bcrypt from "bcrypt"
 import prisma from "../../utils/prisma";
-import { omit } from "lodash";
 
 export async function createUser(input: CreateUserInput){
     const {password, ...rest} = input

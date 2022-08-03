@@ -10,9 +10,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model User {
-  id String @id @unique @default(uuid())
+  id String @unique @default(uuid())
   name String
   email String @unique
   password String
+  jobs Jobs[]
+}
+
+model Jobs {
+  id String @id @default(uuid())
+  company String
+  position String
+  status Status @default(Pending)
+  owner User @relation(fields: [ownerId], references: [id])
+  ownerId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Status {
+  Interview
+  Declined
+  Pending
 }

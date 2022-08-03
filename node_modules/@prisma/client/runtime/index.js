@@ -15278,7 +15278,7 @@ var require_package2 = __commonJS({
   "package.json"(exports, module2) {
     module2.exports = {
       name: "@prisma/client",
-      version: "4.1.0",
+      version: "4.1.1",
       description: "Prisma Client is an auto-generated, type-safe and modern JavaScript/TypeScript ORM for Node.js that's tailored to your data. Supports MySQL, PostgreSQL, MariaDB, SQLite databases.",
       keywords: [
         "orm",
@@ -15346,15 +15346,15 @@ var require_package2 = __commonJS({
         "@opentelemetry/resources": "^1.4.0",
         "@opentelemetry/sdk-trace-base": "1.4.0",
         "@opentelemetry/semantic-conventions": "^1.4.0",
-        "@prisma/debug": "workspace:4.1.0",
-        "@prisma/engine-core": "workspace:4.1.0",
-        "@prisma/engines": "workspace:4.1.0",
-        "@prisma/fetch-engine": "workspace:4.1.0",
-        "@prisma/generator-helper": "workspace:4.1.0",
-        "@prisma/get-platform": "workspace:4.1.0",
-        "@prisma/instrumentation": "workspace:4.1.0",
-        "@prisma/internals": "workspace:4.1.0",
-        "@prisma/migrate": "workspace:4.1.0",
+        "@prisma/debug": "workspace:4.1.1",
+        "@prisma/engine-core": "workspace:4.1.1",
+        "@prisma/engines": "workspace:4.1.1",
+        "@prisma/fetch-engine": "workspace:4.1.1",
+        "@prisma/generator-helper": "workspace:4.1.1",
+        "@prisma/get-platform": "workspace:4.1.1",
+        "@prisma/instrumentation": "workspace:4.1.1",
+        "@prisma/internals": "workspace:4.1.1",
+        "@prisma/migrate": "workspace:4.1.1",
         "@swc-node/register": "1.5.1",
         "@swc/core": "1.2.204",
         "@swc/jest": "0.2.21",
@@ -24584,10 +24584,10 @@ __name(backOff, "backOff");
 
 // ../engines/package.json
 var devDependencies = {
-  "@prisma/debug": "workspace:4.1.0",
+  "@prisma/debug": "workspace:4.1.1",
   "@prisma/engines-version": "4.1.0-48.8d8414deb360336e4698a65aa45a1fbaf1ce13d8",
-  "@prisma/fetch-engine": "workspace:4.1.0",
-  "@prisma/get-platform": "workspace:4.1.0",
+  "@prisma/fetch-engine": "workspace:4.1.1",
+  "@prisma/get-platform": "workspace:4.1.1",
   "@swc/core": "1.2.197",
   "@swc/jest": "0.2.21",
   "@types/jest": "28.1.5",
