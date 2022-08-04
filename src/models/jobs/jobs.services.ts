@@ -5,3 +5,20 @@ export async function createJobs(data: CreateJobsInput & {ownerId: string}){
         data
     })
 }
+
+export async function GetAllJobs(){
+    return prisma.jobs.findMany({
+        select: {
+            id: true,
+            position: true,
+            company: true,
+            status: true,
+            owner: {
+                select: {
+                    id: true,
+                    name: true
+                }
+            }
+        }
+    })
+}

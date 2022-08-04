@@ -4,6 +4,9 @@ import userRoutes from "./models/user/user.route"
 import { userSchema } from "./models/user/user.schema"
 import { FastifyRequest } from "fastify"
 import { FastifyReply } from "fastify"
+import { jobsRoutes } from "./models/jobs/jobs.route"
+import { jobsSchema } from "./models/jobs/jobs.schema"
+// import { jobsSchema } from "./models/jobs/jobs.schema"
 
 const server = Fastify()
 
@@ -51,7 +54,7 @@ async function main(){
         server.addSchema(schema)
     }
     server.register(userRoutes, {prefix: "api/users"})
-
+    server.register(jobsRoutes, {prefix: "/api/jobs"})
     try{
         await server.listen(3000, "0.0.0.0")
         console.log("Server Running At http://localhost:3000")
