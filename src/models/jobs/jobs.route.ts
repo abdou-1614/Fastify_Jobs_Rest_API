@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify';
-import { createJobsHandler } from './jobs.controller';
+import { createJobsHandler, getAllJobsHandeler } from './jobs.controller';
 import { $ref } from './jobs.schema';
 export async function jobsRoutes(server: FastifyInstance){
     server.post("/", {
@@ -11,4 +11,5 @@ export async function jobsRoutes(server: FastifyInstance){
         //     }
         // }
     }, createJobsHandler)
+    server.get("/", getAllJobsHandeler)
 }
