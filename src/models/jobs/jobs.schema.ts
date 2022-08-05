@@ -1,5 +1,5 @@
 import {buildJsonSchemas} from "fastify-zod"
-import z from "zod"
+import z, {object} from "zod"
 
 const jobsInput = {
     company: z.string(),
@@ -23,7 +23,19 @@ const jobReplySchema = z.object({
 
 const jobsReplySchema = z.array(jobReplySchema)
 
+const getJobsSchema = z.object({
+    params: z.object({
+        id: z.string()
+    }),
+    body: z.object({
+        company: z.string(),
+        position: z.string(),
+        status: z.any().optional()      
+    })
+})
+
 export type CreateJobsInput = z.infer<typeof createJobsShema>
+export type GetJobInput = z.infer<typeof getJobsSchema>
 
 export const {schemas: jobsSchema, $ref} = buildJsonSchemas({
     createJobsShema,

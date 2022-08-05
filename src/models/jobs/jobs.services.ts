@@ -1,5 +1,5 @@
 import prisma from '../../utils/prisma';
-import { CreateJobsInput } from './jobs.schema';
+import { CreateJobsInput, GetJobInput } from './jobs.schema';
 export async function createJobs(data: CreateJobsInput & {ownerId: string}){
     return prisma.jobs.create({
         data
@@ -19,6 +19,14 @@ export async function GetAllJobs(){
                     name: true
                 }
             }
+        }
+    })
+}
+
+export async function getJob(id: string){
+    return prisma.jobs.findUnique({
+        where: {
+            id
         }
     })
 }

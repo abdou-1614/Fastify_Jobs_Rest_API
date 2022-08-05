@@ -20,7 +20,7 @@ model User {
 }
 
 model Jobs {
-  id String @id @default(uuid())
+  id String @id @unique @default(uuid())
   company String
   position String
   status Status @default(Pending)
