@@ -26,6 +26,11 @@ const jobsReplySchema = z.array(jobReplySchema)
 const getJobsSchema = z.object({
     params: z.object({
         id: z.string()
+    })
+})
+const updateJobsSchema = z.object({
+    params: z.object({
+        id: z.string()
     }),
     body: z.object({
         company: z.string(),
@@ -36,6 +41,7 @@ const getJobsSchema = z.object({
 
 export type CreateJobsInput = z.infer<typeof createJobsShema>
 export type GetJobInput = z.infer<typeof getJobsSchema>
+export type UpdateJobsInput = z.infer<typeof updateJobsSchema>
 
 export const {schemas: jobsSchema, $ref} = buildJsonSchemas({
     createJobsShema,
