@@ -31,24 +31,19 @@ export async function getJob(id: string){
     })
 }
 
-export async function updateJobs(id: UpdateJobsInput["params"], input: UpdateJobsInput["body"]){
-    const {company, status, position} = input
-    return prisma.jobs.update({
+export async function updateJobs(id: string, data: UpdateJobsInput["body"]){
+    return prisma.jobs.updateMany({
         where: {
-            id: String(id)
+            id
         },
-        data: {
-            company,
-            status,
-            position
-        }
+        data
     })
 }
 
-export async function deleteJobs(id: DeleteJobsInput){
+export async function deleteJobs(id: string){
     return prisma.jobs.delete({
         where: {
-            id: String(id)
+            id
         }
     })
 }

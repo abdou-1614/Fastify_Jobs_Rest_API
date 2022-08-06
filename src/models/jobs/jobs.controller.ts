@@ -1,7 +1,7 @@
-import { CreateJobsInput, GetJobInput, UpdateJobsInput } from './jobs.schema';
+import { CreateJobsInput, DeleteJobsInput, GetJobInput, UpdateJobsInput } from './jobs.schema';
 import { FastifyRequest } from 'fastify';
 import { FastifyReply } from 'fastify';
-import { createJobs, GetAllJobs, getJob, updateJobs } from './jobs.services';
+import { createJobs, deleteJobs, GetAllJobs, getJob, updateJobs } from './jobs.services';
 export async function createJobsHandler(request: FastifyRequest<{Body:CreateJobsInput}>, reply: FastifyReply){
     const ownerId = request.user.id
     const jobs = await createJobs({
@@ -35,9 +35,18 @@ export async function updateJobsHandler(request: FastifyRequest<{Params: UpdateJ
     if(company.length === 0 || position.length === 0){
         throw new Error("Position Or Company Fields Cannot Be Empty")
     }
-    const jobs = await updateJobs({id}, request.body)
+    const jobs = await updateJobs(id, request.body)
     if(!jobs){
         return reply.code(404).send("No Jobs Found")
     }
-    return reply.code(201).send(jobs)
+    return reply.send("Updated Succesfully")
+}
+
+export async function deleteJobsHanfler(request: FastifyRequest<{Params: DeleteJobsInput}>, reply: FastifyReply){
+    const {id} = request.params
+    const jobs = await deleteJobs(id)
+    if(!jobs){
+        return reply.code(404).send("No Jobs Found")
+    }
+    return reply.send("Job Deleted Successful")
 }

@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify';
-import { createJobsHandler, getAllJobsHandeler, getSingleJobHandler, updateJobsHandler } from './jobs.controller';
+import { createJobsHandler, deleteJobsHanfler, getAllJobsHandeler, getSingleJobHandler, updateJobsHandler } from './jobs.controller';
 import { $ref } from './jobs.schema';
 export async function jobsRoutes(server: FastifyInstance){
     server.post("/", {
@@ -11,11 +11,16 @@ export async function jobsRoutes(server: FastifyInstance){
         //     }
         // }
     }, createJobsHandler)
-    server.get("/", getAllJobsHandeler)
+    server.get("/", {
+        preHandler: [server.authenticate]
+    } ,getAllJobsHandeler)
     server.get("/:id", {
         preHandler: [server.authenticate]
     } , getSingleJobHandler)
     server.put("/:id", {
         preHandler: [server.authenticate]
     }, updateJobsHandler)
+    server.delete("/:id", {
+        preHandler: [server.authenticate]
+    }, deleteJobsHanfler)
 }
