@@ -1,5 +1,5 @@
 import prisma from '../../utils/prisma';
-import { CreateJobsInput, GetJobInput, UpdateJobsInput } from './jobs.schema';
+import { CreateJobsInput, DeleteJobsInput, GetJobInput, UpdateJobsInput } from './jobs.schema';
 export async function createJobs(data: CreateJobsInput & {ownerId: string}){
     return prisma.jobs.create({
         data
@@ -41,6 +41,14 @@ export async function updateJobs(id: UpdateJobsInput["params"], input: UpdateJob
             company,
             status,
             position
+        }
+    })
+}
+
+export async function deleteJobs(id: DeleteJobsInput){
+    return prisma.jobs.delete({
+        where: {
+            id: String(id)
         }
     })
 }

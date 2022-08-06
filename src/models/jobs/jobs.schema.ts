@@ -39,9 +39,16 @@ const updateJobsSchema = z.object({
     })
 })
 
+const deleteJobsSchema = z.object({
+    params: z.object({
+        id: z.string()
+    })
+})
+
 export type CreateJobsInput = z.infer<typeof createJobsShema>
 export type GetJobInput = z.infer<typeof getJobsSchema>
 export type UpdateJobsInput = z.infer<typeof updateJobsSchema>
+export type DeleteJobsInput = z.infer<typeof deleteJobsSchema>["params"]
 
 export const {schemas: jobsSchema, $ref} = buildJsonSchemas({
     createJobsShema,
