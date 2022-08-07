@@ -6,19 +6,10 @@ export async function createJobs(data: CreateJobsInput & {ownerId: string}){
     })
 }
 
-export async function GetAllJobs(){
+export async function GetAllJobs(ownerId: string){
     return prisma.jobs.findMany({
-        select: {
-            id: true,
-            position: true,
-            company: true,
-            status: true,
-            owner: {
-                select: {
-                    id: true,
-                    name: true
-                }
-            }
+        where: {
+            ownerId
         }
     })
 }
@@ -32,7 +23,7 @@ export async function getJob(id: string){
 }
 
 export async function updateJobs(id: string, data: UpdateJobsInput["body"]){
-    return prisma.jobs.updateMany({
+    return prisma.jobs.update({
         where: {
             id
         },
